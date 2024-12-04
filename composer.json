@@ -1,0 +1,9 @@
+{
+    "name": "dimasoktavian/php-project-based-learning",
+    "autoload": {
+        "psr-4": {
+            "Dimasoktavian\\PhpProjectBasedLearning\\": "src/"
+        }
+    },
+    "require": {}
+}
