@@ -13,6 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      ];
      $_SESSION['ProductData'][] = $newProduct;
      // var_dump($_SESSION['ProductData']);
-     header("Location: product.php");
+     header("Location: ../views/index.php");
      exit();
 }
