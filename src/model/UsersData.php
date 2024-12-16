@@ -14,7 +14,7 @@ function validateUser($username, $password)
      $users = getUsers();
 
      foreach ($users as $user) {
-          if ($user['email'] == $username && $user['password'] == $password) {
+          if ($user['email'] == $username && password_verify($password, $user['password'])) {
                $_SESSION['usersId'] = [
                     'email' => $user['email'],
                     'password' => $user['password']
