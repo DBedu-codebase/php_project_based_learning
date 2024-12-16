@@ -1,18 +1,8 @@
 <?php
-// require_once '../controllers/GetProducts.php';
-// // require_once '../controllers/DeleteAllProducts.php';
-// ? auth middleware based on session userId
 session_start();
+require_once '../middleware/AuthHomeMiddleware.php';
+authHomeMiddleware();
 $error = $_SESSION['error'] ?? [];
-// global $error;
-// var_dump($_SESSION['Users']);
-unset($_SESSION['error']);
-
-if (isset($_SESSION['usersId'])) {
-     header('Location: ../views/Home.php');
-     exit();
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

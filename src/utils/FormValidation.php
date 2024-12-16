@@ -1,5 +1,5 @@
 <?php
-
+require_once '../model/UsersData.php';
 function validateInput($username, $password)
 {
      $error = [];
@@ -16,9 +16,16 @@ function validateInput($username, $password)
      } elseif (strlen($password) < 8) {
           $error['password'] = 'Password must be at least 8 characters';
      }
-
-
      $_SESSION['error'] = $error;
      header('Location: ../views/Sign-up.php');
-     // exit();
+}
+function validateUser($username, $password)
+{
+     foreach (getUsers() as $user) {
+          if ($user['email'] == $username && password_verify($password, $user['password'])) {
+               $_SESSION['usersId'] = $user;
+               return true;
+          }
+     }
+     return false;
 }

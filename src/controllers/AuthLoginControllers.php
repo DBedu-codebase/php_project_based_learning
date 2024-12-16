@@ -1,6 +1,7 @@
 <?php
 require_once '../model/UsersData.php';
-require_once '../middleware/AuthMiddleware.php';
+require_once '../utils/FormValidation.php';
+
 $error = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      $username = $_POST['email'] ?? '';
@@ -17,14 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                'email' => 'Please enter your valid mail',
                'password' => 'Please enter your valid password'
           ];
-
           header('Location: ../views/index.php');
-          // var_dump(
-          //      $_SESSION['error'],
-          //      $_SESSION['Users'],
-          //      $username,
-          //      $password,
-          // );
           exit();
      }
 }

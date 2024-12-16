@@ -1,10 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['usersId'])) {
-     header('Location: index.php');
-     exit();
-}
-// require_once '../middleware/AuthMiddleware.php';
+require_once '../middleware/AuthHomeMiddleware.php';
+authProtectHomeMiddleware();
 ?>
 <!DOCTYPE html>
 <html lang="en">

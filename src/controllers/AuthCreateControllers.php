@@ -1,5 +1,5 @@
 <?php
-require_once '../middleware/AuthMiddleware.php';
+require_once '../utils/FormValidation.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
           ];
           $_SESSION['Users'][] = $newUsers;
-          header("Location: ../views/Sign-up.php");
+          header("Location: ../views/index.php");
           exit();
      } else {
           $_SESSION['error'] = $error;
