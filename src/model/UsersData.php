@@ -1,8 +1,10 @@
 <?php
-session_start();
-$users = [];
 
-$users = $_SESSION['Users'];
+// if (!isset($_SESSION['Users'])) {
+//      $_SESSION['Users'] = [];
+// }
+session_start();
+$users = $_SESSION['Users'] ?? [];
 
 function getUsers()
 {

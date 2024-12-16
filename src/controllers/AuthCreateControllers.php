@@ -1,14 +1,22 @@
 <?php
+require_once '../middleware/AuthMiddleware.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     $newProduct = [
-          'id' => uniqid(),
-          'email' => $_POST['email'],
-          'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-     ];
-     $_SESSION['Users'][] = $newProduct;
-     var_dump($_SESSION['Users']);
-     // header("Location: ../views/index.php");
-     exit();
+     $error = validateInput($_POST['email'], $_POST['password']);
+
+     if (empty($error)) {
+          $newUsers = [
+               'id' => uniqid(),
+               'email' => $_POST['email'],
+               'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+          ];
+          $_SESSION['Users'][] = $newUsers;
+          header("Location: ../views/Sign-up.php");
+          exit();
+     } else {
+          $_SESSION['error'] = $error;
+          header('Location: ../views/Sign-up.php');
+          exit();
+     }
 }
