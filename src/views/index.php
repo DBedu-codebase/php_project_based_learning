@@ -3,6 +3,7 @@ require_once '../middleware/AuthHomeMiddleware.php';
 require_once '../controllers/AuthLoginControllers.php';
 authHomeMiddleware();
 $error = $_SESSION['error'] ?? [];
+unset($_SESSION['error']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
