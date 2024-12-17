@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $_SESSION['ProductData'] = $_SESSION['ProductData'];
 
           // Redirect to the product page after updating
-          header("Location: ../views/index.php");
+          header("Location: ../index.php");
           exit();
      } else {
           // If no valid ID was provided, you can redirect or handle the error as needed

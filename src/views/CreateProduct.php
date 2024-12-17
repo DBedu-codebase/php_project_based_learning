@@ -1,6 +1,5 @@
 <?php
 require_once '../controllers/CreateProducts.php'
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

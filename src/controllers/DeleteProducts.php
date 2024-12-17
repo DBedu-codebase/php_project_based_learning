@@ -8,6 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
           });
           $_SESSION['ProductData'] = array_values($_SESSION['ProductData']);
      }
-     header("Location: ../views/index.php");
+     header("Location: ../index.php");
      exit();
 }

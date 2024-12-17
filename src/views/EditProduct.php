@@ -1,8 +1,5 @@
 <?php
-// session_start();
 require_once '../controllers/GetDetails.php';
-// require_once '../controllers/PutProducts.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
