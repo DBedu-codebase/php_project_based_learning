@@ -83,33 +83,36 @@ require_once './controllers/GetProducts.php';
                                    </tr>
                               </thead>
                               <tbody class="pt-20">
-                                   <?php foreach ($ProductData as $key => $value) : ?>
+                                   <!-- Write your code here || foreach the data -->
+                                   <!--
+                                    <?php foreach ($ProductData as $key => $value) : ?>
                                         <tr class=" border-b dark:border-gray-700">
                                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                  <?= htmlspecialchars($value['name']) ?>
+                                                  <?= htmlspecialchars($value['']) ?>
                                              </th>
                                              <td class="px-4 py-3">
-                                                  <?= htmlspecialchars($value['brand']) ?>
+                                                  <?= htmlspecialchars($value['']) ?>
                                              </td>
                                              <td class="px-4 py-3">
-                                                  <?= htmlspecialchars($value['description']) ?>
+                                                  <?= htmlspecialchars($value['']) ?>
                                              </td>
                                              <td class="px-4 py-3">
-                                                  <?= htmlspecialchars($value['price']) ?>
+                                                  <?= htmlspecialchars($value['']) ?>
                                              </td>
                                              <td class="px-4 py-3">
-                                                  <a id="<?= $value['id']; ?>" name="<?= $value['id']; ?>" href="../views/EditProduct.php?id=<?= $value['id']; ?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                  <a id="<?= $value['']; ?>" name="<?= $value['']; ?>" href="../views/EditProduct.php?id=<?= $value['']; ?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                        Edit
                                                   </a>
                                              </td>
 
                                              <td class="px-4 py-3">
-                                                  <a id="<?= $value['id']; ?>" name="<?= $value['id']; ?>" href="../controllers/DeleteProducts.php?id=<?= $value['id']; ?>" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                                                  <a id="<?= $value['']; ?>" name="<?= $value['']; ?>" href="../controllers/DeleteProducts.php?id=<?= $value['']; ?>" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
                                                        delete
                                                   </a>
                                              </td>
                                         </tr>
                                    <?php endforeach ?>
+                               -->
                               </tbody>
                          </table>
                     </div>
@@ -117,7 +120,7 @@ require_once './controllers/GetProducts.php';
                          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                               Showing
                               <span class="font-semibold text-gray-900 dark:text-white">
-                                   <?php echo $count; ?>
+                                   <!-- Write your code here || count length product data -->
                               </span>
                               Products
                          </span>

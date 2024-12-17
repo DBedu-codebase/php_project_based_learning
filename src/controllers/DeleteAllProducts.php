@@ -1,5 +1,5 @@
 <?php
 session_start();
-unset($_SESSION['ProductData']);
+// ? Write your code here || Delete sesion products with unset
 header("Location: ../index.php");
 exit();
