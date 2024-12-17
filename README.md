@@ -37,44 +37,27 @@ Berdasarkan penjelasan di atas, kita telah berhasil membuat project dan melakuka
 ## **Output Format**
 
 Jalankan program dengan menggunakan **`php -S localhost:9000`** untuk menampilkan program. 
-Contoh format kalimat:
 
-```js
-=== Program Kakulator Sederhana ===
-Ketik 'add' untuk menambahkan input number.
-Ketik 'x' untuk keluar.
-Ketik 'sum' untuk menjumlahkan item.
-Ketik 'subtract' untuk mengurangi item.
-Ketik 'divide' untuk membagi item.
-Ketik 'multiply' untuk mengalikan item.
-
-Masukkan perintah Anda: add
-Masukkan item untuk ditambahkan (ketik 'exit' untuk kembali ke menu utama): 1
-Daftar item saat ini:
-1 - 1
-Masukkan item untuk ditambahkan (ketik 'exit' untuk kembali ke menu utama): 1
-Daftar item saat ini:
-1 - 1
-2 - 1
-Masukkan item untuk ditambahkan (ketik 'exit' untuk kembali ke menu utama): 1
-Daftar item sudah penuh.
-
-Masukkan perintah Anda: sum
-2
-```
-
-> **Catatan**: Pastikan menggunakan variabel dan operator untuk mengisi nilai dalam kalimat tersebut.
+- `Index.php`:
+![Index.php](https://res.cloudinary.com/duvpel2np/image/upload/v1734428070/PHP_PROJECT_BASED_LEARN_ASSETS/indexpage_ygtnzc.png "Index.php")
+- `CreateProduct.php`:
+![CreateProduct.php](https://res.cloudinary.com/duvpel2np/image/upload/v1734428070/PHP_PROJECT_BASED_LEARN_ASSETS/create-products_gkyfvv.png "CreateProduct.php")
+- `EditProduct.php`:
+![CreateProduct.php](https://res.cloudinary.com/duvpel2np/image/upload/v1734428070/PHP_PROJECT_BASED_LEARN_ASSETS/update-page_fec3bo.png "CreateProduct.php")
+- `Index.php`:
+![Index.php](https://res.cloudinary.com/duvpel2np/image/upload/v1734428070/PHP_PROJECT_BASED_LEARN_ASSETS/homeUpdate_ophtbl.png "Index.php")
+> **Catatan**: Pastikan data dipassing dengan tepat pada views.
 
 ---
 
 ## **Optional Logic (Tambahan)**
 
 Tambahkan beberapa **logika tambahan** yang relevan, sesuai dengan materi yang telah diajarkan sebelumnya. Misalnya:
-- Tambahkan validasi `is_numeric`, untuk melakukan validasi tipe data tersebut sebelum melakukan eksekusi function. 
+- Tambahkan fitur search, untuk melakukan pencarian berdasarkan `name` dari `Products`. 
+- Tambahkan fitur `ascending & descending` pada `Products`, untuk menampilkan list product dari harga yang tertinggi atau terendah.
+<!-- --- -->
 
----
-
-## **Contoh Output Tambahan (Jika Menggunakan Logika)**
+<!-- ## **Contoh Output Tambahan (Jika Menggunakan Logika)**
 
 Jika nilai input bukan sebuah angka, maka akan menampilkan hasil berikut:
 ```js
@@ -91,7 +74,7 @@ Masukkan item untuk ditambahkan (ketik 'exit' untuk kembali ke menu utama): saas
 Masukan angka yang valid. // menampilkan response
 
 Masukkan perintah Anda:
-```
+``` -->
 
 <!-- --- -->
 
