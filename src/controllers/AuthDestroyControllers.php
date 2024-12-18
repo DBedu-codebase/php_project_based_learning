@@ -1,10 +1,8 @@
 <?php
 session_start();
 
-// Delete session usersId
-if (isset($_SESSION['usersId'])) {
-     unset($_SESSION['usersId']);
-}
+// ? Write your code here || unset the usersId session if it exists
+
 
 // Redirect ke halaman login
 header("Location: ../views/index.php");
