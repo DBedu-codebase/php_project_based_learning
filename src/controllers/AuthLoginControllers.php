@@ -1,5 +1,5 @@
 <?php
-require_once '../model/UsersData.php';
+require_once '../model/Database.php';
 require_once '../utils/FormValidation.php';
 
 $error = [];
@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
      if ($validateUser) {
           unset($_SESSION['error']);
-          header('Location: ../views/Home.php');
+          header('Location: /dashboard');
           exit();
      } else {
           $_SESSION['error'] = [
                'email' => 'Please enter your valid mail',
                'password' => 'Please enter your valid password'
           ];
-          header('Location: ../views/index.php');
+          header('Location: /login');
           exit();
      }
 }

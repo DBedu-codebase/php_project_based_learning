@@ -4,8 +4,9 @@
 function authProtectHomeMiddleware()
 {
      if (!isset($_SESSION['usersId'])) {
-          header('Location: index.php');  // Redirect to login page if not logged in
-          exit();
+          echo "Not logged in, redirecting to /login...<br>";
+          header('Location: /dashboard');  // Redirect to login page if not logged in
+          // exit();
      }
 }
 
@@ -13,7 +14,8 @@ function authProtectHomeMiddleware()
 function authHomeMiddleware()
 {
      if (isset($_SESSION['usersId'])) {
-          header('Location: ../views/Home.php');  // Redirect to home if already logged in
-          exit();
+          echo "already logged...<br>";
+          header('Location: /register');  // Redirect to home if already logged in
+          // exit();
      }
 }

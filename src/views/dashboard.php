@@ -1,3 +1,8 @@
+<?php
+// session_start();
+// require_once '../middleware/AuthHomeMiddleware.php';
+// authProtectHomeMiddleware();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

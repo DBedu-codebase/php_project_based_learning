@@ -1,6 +1,6 @@
 <?php
-require_once '../utils/FormValidation.php';
 session_start();
+require_once '../utils/FormValidation.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      $error = validateInput($_POST['email'], $_POST['password']);
@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           ];
           $_SESSION['Users'][] = $newUsers;
           // var_dump($_SESSION['Users']);
-          header("Location: ../views/login.php");
+          header("Location: /login");
           exit();
      } else {
           $_SESSION['error'] = $error;
-          header('Location: ../views/Sign-up.php');
+          header('Location: /register');
           exit();
      }
 }

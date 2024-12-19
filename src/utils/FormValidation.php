@@ -1,5 +1,5 @@
 <?php
-require_once '../model/UsersData.php';
+require_once '../model/Database.php';
 function validateInput($username, $password)
 {
      $error = [];
