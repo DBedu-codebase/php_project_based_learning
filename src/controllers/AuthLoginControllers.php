@@ -6,17 +6,18 @@ $error = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      $username = $_POST['email'] ?? '';
      $password = $_POST['password'] ?? '';
-     // ? Write your code here || passing the username and password to the validateUser function
-     $validateUser = validateUser();
+
+     $validateUser = validateUser($username, $password);
 
      if ($validateUser) {
-          // ? Write your code here || delete the error session
+          unset($_SESSION['error']);
           header('Location: ../views/Home.php');
           exit();
      } else {
-          // ? Write your code here || assign the error message to the error session
-          // ? Write your code here || error message should be 'Please enter your valid mail' and 'Please enter your valid password'
-          $_SESSION['error'] = [];
+          $_SESSION['error'] = [
+               'email' => 'Please enter your valid mail',
+               'password' => 'Please enter your valid password'
+          ];
           header('Location: ../views/index.php');
           exit();
      }

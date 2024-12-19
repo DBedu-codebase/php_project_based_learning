@@ -3,8 +3,7 @@ require_once '../middleware/AuthHomeMiddleware.php';
 require_once '../controllers/AuthLoginControllers.php';
 authHomeMiddleware();
 $error = $_SESSION['error'] ?? [];
-// ? Write your code here || delete the session error here
-
+unset($_SESSION['error']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,8 @@ $error = $_SESSION['error'] ?? [];
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login Page</title>
+     <title>Register Page</title>
+     <link rel="icon" href="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" type="image/x-icon">
      <script src="https://cdn.tailwindcss.com"></script>
      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
      <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -34,24 +34,22 @@ $error = $_SESSION['error'] ?? [];
                               <div>
                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
-                                   <!-- Write your code here || show the error validation with if statement -->
-
-                                   <p class="mt-2 text-sm text-red-600">
-                                        <!--  Write your code here || show the error validation inside here -->
-                                   </p>
+                                   <?php if (!empty($error['email'])): ?>
+                                        <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['email']) ?></p>
+                                   <?php endif; ?>
                               </div>
                               <div>
                                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                    <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-                                   <!-- Write your code here || show the error validation with if statement -->
-
-                                   <p class="mt-2 text-sm text-red-600">
-                                        <!--  Write your code here || show the error validation inside here -->
-                                   </p>
+                                   <?php if (!empty($error['password'])): ?>
+                                        <p class="mt-2 text-sm text-red-600">
+                                             <?= htmlspecialchars($error['password']) ?>
+                                        </p>
+                                   <?php endif; ?>
                               </div>
                               <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign in</button>
                               <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                   Don’t have an account yet? <a href="Sign-up.php" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
+                                   Don’t have an account yet? <a href="/register" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
                               </p>
                          </form>
                     </div>
