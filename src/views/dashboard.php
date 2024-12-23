@@ -165,12 +165,9 @@ $error = $_SESSION['error'] ?? [];
                                                        <div id="dropdown-toggle-<?= $todo['id'] ?>" class="absolute top-0 right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                                                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-<?= $todo['id'] ?>">
                                                                  <li>
-                                                                      <!-- <form action="/GetTodoIdeControllers?id=<?= $todo['id'] ?>" method="get"> -->
-                                                                      <!-- <input type="hidden" name="id" value="<?= $todo['id'] ?>"> -->
-                                                                      <!-- <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                                                                Edit
-                                                                           </button>
-                                                                      </form> -->
+                                                                      <a href="/UpdateTodos?id=<?= $todo['id'] ?>" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                           Edit
+                                                                      </a>
                                                                  </li>
                                                                  <li>
                                                                       <form action="/DeleteTodoControllers" method="post">

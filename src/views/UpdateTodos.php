@@ -1,6 +1,11 @@
 <?php
-$todo_data = $_SESSION['todoId'][0] ?? [];
+$filtered = $_SESSION['todoId'][0] ?? [];
 $error = $_SESSION['error'] ?? [];
+$itemId = $_GET['id'];
+$filtered = array_filter($_SESSION['Todos-' . $_SESSION['usersId']['id']], function ($item) use ($itemId) {
+     return $item['id'] == $itemId;
+});
+$filtered = array_values($filtered)[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +60,11 @@ $error = $_SESSION['error'] ?? [];
      <section class="bg-white dark:bg-gray-900 h-screen">
           <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
                <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update Task</h2>
-               <form action="/EditTodoControllers?id=<?= $todo_data['id'] ?>" method="post">
+               <form action="/EditTodoControllers?id=<?= $filtered['id'] ?>" method="post">
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                          <div>
                               <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                              <input value="<?= htmlspecialchars($todo_data['title']) ?>" type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type task title" required="">
+                              <input value="<?= htmlspecialchars($filtered['title']) ?>" type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type task title" required="">
                               <?php if (!empty($error['title'])): ?>
                                    <p class="mt-2 text-sm text-red-600">
                                         <?= htmlspecialchars($error['title']) ?>
@@ -68,7 +73,7 @@ $error = $_SESSION['error'] ?? [];
                          </div>
                          <div>
                               <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DueDate</label>
-                              <input value="<?= htmlspecialchars($todo_data['date']) ?>" type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="11/11/2022" required="">
+                              <input value="<?= htmlspecialchars($filtered['date']) ?>" type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="11/11/2022" required="">
                               <?php if (!empty($error['date'])): ?>
                                    <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['date']) ?></p>
                               <?php endif; ?>
@@ -76,8 +81,8 @@ $error = $_SESSION['error'] ?? [];
                          <div>
                               <label for="Priority" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Priority</label>
                               <select name="Priority" id="Priority" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                   <option value="<?= htmlspecialchars($todo_data['priority']) ?>" selected>
-                                        <?= htmlspecialchars($todo_data['priority']) ?>
+                                   <option value="<?= htmlspecialchars($filtered['priority']) ?>" selected>
+                                        <?= htmlspecialchars($filtered['priority']) ?>
                                    </option>
                                    <option value="High">High</option>
                                    <option value="Medium">Medium</option>
@@ -90,8 +95,8 @@ $error = $_SESSION['error'] ?? [];
                          <div>
                               <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                               <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                   <option value="<?= htmlspecialchars($todo_data['category']) ?>" selected>
-                                        <?= htmlspecialchars($todo_data['category']) ?>
+                                   <option value="<?= htmlspecialchars($filtered['category']) ?>" selected>
+                                        <?= htmlspecialchars($filtered['category']) ?>
                                    </option>
                                    <option value="Work">Work</option>
                                    <option value="School">School</option>
@@ -104,7 +109,7 @@ $error = $_SESSION['error'] ?? [];
                          <div class="sm:col-span-2">
                               <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                               <textarea name="description" id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here">
-                              <?php echo htmlspecialchars($todo_data['description']) ?>
+                              <?php echo htmlspecialchars($filtered['description']) ?>
                               </textarea>
                               <?php if (!empty($error['description'])): ?>
                                    <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['description']) ?></p>
