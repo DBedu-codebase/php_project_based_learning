@@ -1,6 +1,7 @@
 <?php
-session_start();
+// session_start();
 require_once '../utils/FormValidation.php';
+require_once '../utils/DateFormat.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      $error = validateTodos(
@@ -10,20 +11,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $_POST['category'],
           $_POST['description']
      );
-     if (empty($error)) {
+
+     if (empty($_SESSION['error'])) {
+          unset($_SESSION['error']);
           $newTodos = [
                'id' => uniqid(),
                'title' => $_POST['title'],
-               'date' => $_POST['date'],
+               'date' => formatDate($_POST['date']),
                'priority' => $_POST['Priority'],
                'category' => $_POST['category'],
-               'description' => $_POST['description'],
+               'description' => trim(preg_replace('/\s+/', ' ', $_POST['description'])),
                'isCompleted' => false,
                'createdAt' => date('Y-m-d H:i:s'),
                'updatedAt' => date('Y-m-d H:i:s'),
           ];
           $_SESSION['Todos-' . $_SESSION['usersId']['id']][] = $newTodos;
-
+          header('Location: /dashboard');
+          exit();
+     } else {
+          $_SESSION['error'] = $error;
           header('Location: /dashboard');
           exit();
      }

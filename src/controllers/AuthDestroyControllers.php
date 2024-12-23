@@ -1,11 +1,13 @@
 <?php
 session_start();
 
-// Delete session usersId
-if (isset($_SESSION['usersId'])) {
-     unset($_SESSION['usersId']);
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+     // Delete session usersId
+     if (isset($_SESSION['usersId'])) {
+          unset($_SESSION['usersId']);
+     }
 
-// Redirect ke halaman login
-header("Location: /register");
-exit();
+     // Redirect ke halaman login
+     header("Location: /register");
+     exit();
+}

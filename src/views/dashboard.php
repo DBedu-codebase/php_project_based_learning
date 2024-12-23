@@ -1,5 +1,6 @@
 <?php
 $error = $_SESSION['error'] ?? [];
+// unset($_SESSION['todoId']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,7 @@ $error = $_SESSION['error'] ?? [];
                               </div>
                               <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
                                    <li>
-                                        <form action="/AuthdescriptiontroyControllers" method="post">
+                                        <form action="/AuthDestroyControllers" method="post">
                                              <button type="submit" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                   Sign out
                                              </button>
@@ -130,26 +131,30 @@ $error = $_SESSION['error'] ?? [];
                                    </tr>
                               </thead>
                               <tbody>
-                                   <?php foreach ($_SESSION['Todos-' . $_SESSION['usersId']['id']] ?? [] as $Todos) : ?>
+                                   <?php foreach ($_SESSION['Todos-' . ($_SESSION['usersId']['id'] ?? '')] ?? [] as $todo) : ?>
                                         <tr class="border-b dark:border-gray-700">
                                              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                  <?= htmlspecialchars($Todos['title']) ?>
+                                                  <?= htmlspecialchars($todo['title']) ?>
                                              </th>
                                              <td class="px-4 py-3">
-                                                  <?= htmlspecialchars($Todos['category']) ?>
+                                                  <?= htmlspecialchars($todo['category']) ?>
                                              </td>
                                              <td class="px-4 py-3">
-                                                  <?= htmlspecialchars($Todos['priority']) ?>
+                                                  <?= htmlspecialchars($todo['priority']) ?>
                                              </td>
                                              <td class="px-4 py-3">
-                                                  <?= $Todos['isCompleted'] ? 'Done' : 'In Progress' ?>
+                                                  <?= $todo['isCompleted'] ? 'Done' : 'In Progress' ?>
                                              </td>
                                              <td class="px-4 py-3">
-                                                  <?= htmlspecialchars($Todos['date']) ?>
+                                                  <?= htmlspecialchars($todo['date']) ?>
                                              </td>
                                              <td class="px-4 py-3 h-auto">
                                                   <div class="relative right-0">
-                                                       <button id="<?= $Todos['id'] . '-dropdown' ?>" data-dropdown-toggle="<?= $Todos['id'] . '-dropdown-toggle' ?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                                                       <button
+                                                            id="dropdown-<?= $todo['id'] ?>"
+                                                            data-dropdown-toggle="dropdown-toggle-<?= $todo['id'] ?>"
+                                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                                            type="button">
                                                             Dropdown button
                                                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -157,25 +162,31 @@ $error = $_SESSION['error'] ?? [];
                                                        </button>
 
                                                        <!-- Dropdown menu -->
-                                                       <div id="<?= $Todos['id'] . '-dropdown-toggle' ?>" class="absolute top-0 right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="<?= $Todos['id'] . '-dropdown' ?>">
+                                                       <div id="dropdown-toggle-<?= $todo['id'] ?>" class="absolute top-0 right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-<?= $todo['id'] ?>">
                                                                  <li>
-                                                                      <form action="/EditTodoControllers?id=<?= $Todos['id'] ?> " method="post">
-                                                                           <input type="submit" value="edit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                                                      </form>
+                                                                      <!-- <form action="/GetTodoIdeControllers?id=<?= $todo['id'] ?>" method="get"> -->
+                                                                      <!-- <input type="hidden" name="id" value="<?= $todo['id'] ?>"> -->
+                                                                      <!-- <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                                Edit
+                                                                           </button>
+                                                                      </form> -->
                                                                  </li>
                                                                  <li>
-                                                                      <form action="/DeleteTodoControllers?id=<?= $Todos['id'] ?>" method="post">
-                                                                           <input type="submit" value="delete" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                      <form action="/DeleteTodoControllers" method="post">
+                                                                           <input type="hidden" name="id" value="<?= $todo['id'] ?>">
+                                                                           <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                                Delete
+                                                                           </button>
                                                                       </form>
                                                                  </li>
                                                             </ul>
                                                        </div>
                                                   </div>
                                              </td>
-
                                         </tr>
                                    <?php endforeach; ?>
+
                               </tbody>
                          </table>
                     </div>
