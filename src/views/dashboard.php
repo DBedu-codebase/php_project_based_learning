@@ -160,12 +160,12 @@ $error = $_SESSION['error'] ?? [];
                                                        <div id="<?= $Todos['id'] . '-dropdown-toggle' ?>" class="absolute top-0 right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                                                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="<?= $Todos['id'] . '-dropdown' ?>">
                                                                  <li>
-                                                                      <form action="/edit?id=<?= $Todos['id'] ?> " method="post">
+                                                                      <form action="/EditTodoControllers?id=<?= $Todos['id'] ?> " method="post">
                                                                            <input type="submit" value="edit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                                       </form>
                                                                  </li>
                                                                  <li>
-                                                                      <form action="/delete?id=<?= $Todos['id'] ?>" method="post">
+                                                                      <form action="/DeleteTodoControllers?id=<?= $Todos['id'] ?>" method="post">
                                                                            <input type="submit" value="delete" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                                       </form>
                                                                  </li>
