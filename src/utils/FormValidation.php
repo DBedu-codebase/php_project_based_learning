@@ -19,6 +19,33 @@ function validateInput($username, $password)
      $_SESSION['error'] = $error;
      header('Location: /register');
 }
+function validateTodos($title, $date, $Priority, $category, $description)
+{
+     $error = [];
+     if (empty($title)) {
+          $error['title'] = 'Title is required';
+     }
+     if (empty($Priority)) {
+          $error['priority'] = 'priority is required';
+     }
+     if (empty($category)) {
+          $error['category'] = 'category is required';
+     }
+
+     if (empty($date)) {
+          $error['date'] = 'DueDate is required';
+     } elseif (date_create_from_format('d/m/Y', $date) < date_create_from_format('d/m/Y', date('d/m/Y'))) {
+          $error['date'] = 'Date must be in the future';
+     }
+     if (empty($description)) {
+          $error['description'] = 'description is required';
+     } elseif (strlen($description) < 10) {
+          $error['description'] = 'description must be have at least 10 characters';
+     }
+
+
+     $_SESSION['error'] = $error;
+}
 function validateUser($username, $password)
 {
      foreach (getUsers() as $user) {
