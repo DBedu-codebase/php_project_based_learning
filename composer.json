@@ -1,9 +1,12 @@
 {
-    "name": "dimasoktavian/php-project-based-learning",
-    "autoload": {
-        "psr-4": {
-            "Dimasoktavian\\PhpProjectBasedLearning\\": "src/"
-        }
-    },
-    "require": {}
+     "name": "dimasoktavian/php-project-based-learning",
+     "scripts": {
+          "start-server": "php -S localhost:9000 -t src/public"
+     },
+     "autoload": {
+          "psr-4": {
+               "Dimasoktavian\\PhpProjectBasedLearning\\": "src/"
+          }
+     },
+     "require": {}
 }

@@ -1,5 +1,4 @@
 <?php
-// src/public/index.php
 
 session_start(); // Start session to use session variables
 

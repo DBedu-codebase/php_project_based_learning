@@ -17,7 +17,7 @@ function validateInput($username, $password)
           $error['password'] = 'Password must be at least 8 characters';
      }
      $_SESSION['error'] = $error;
-     header('Location: ../views/Sign-up.php');
+     header('Location: /register');
 }
 function validateUser($username, $password)
 {

@@ -7,5 +7,5 @@ if (isset($_SESSION['usersId'])) {
 }
 
 // Redirect ke halaman login
-header("Location: ../views/index.php");
+header("Location: /register");
 exit();
