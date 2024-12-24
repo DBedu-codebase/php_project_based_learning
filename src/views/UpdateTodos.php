@@ -73,9 +73,6 @@ $filtered = array_values($filtered)[0];
                </div>
                <form action="/EditTodoControllers?id=<?= $filtered['id'] ?>" method="post">
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                              <path fill="currentColor" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6z" />
-                         </svg>
                          <div>
                               <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
                               <input value="<?= htmlspecialchars($filtered['title']) ?>" type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type task title" required="">
