@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          $todo['priority'] = $_POST['Priority'] ?? $todo['priority'];
                          $todo['category'] = $_POST['category'] ?? $todo['category'];
                          $todo['description'] = $_POST['description'] ?? $todo['description'];
-                         $todo['isCompleted'] = true;
+                         $todo['isCompleted'] = $_POST['status'] ?? $todo['isCompleted'];
                          $todo['updatedAt'] = date('Y-m-d H:i:s');
                          break; // Break the loop after finding and updating the todo
                     }
