@@ -104,23 +104,23 @@ $error = $_SESSION['error'] ?? [];
                                         <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Choose brand</h6>
                                         <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                                              <li class="flex items-center">
-                                                  <input id="default" checked name="brand" type="radio" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                  <label for="default" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">ALL</label>
+                                                  <input id="all" checked name="all" type="radio" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                  <label for="all" name="all" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">ALL</label>
                                              </li>
                                              <li class="flex items-center">
-                                                  <input id="apple" name="brand" type="radio" value="apple" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                  <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Complete</label>
+                                                  <input id="complete" name="complete" type="radio" value="complete" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                  <label name="complete" for="complete" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Complete</label>
                                              </li>
                                              <li class="flex items-center">
-                                                  <input id="microsoft" name="brand" type="radio" value="microsoft" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                  <label for="microsoft" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Incomplete</label>
+                                                  <input id="progress" name="progress" type="radio" value="progress" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                  <label name="progress" for="progress" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Incomplete</label>
                                              </li>
                                         </ul>
                                    </div>
                               </div>
                          </div>
                     </div>
-                    <div class="overflow-x-auto">
+                    <div class="overflow-x-auto pb-96 overflow-y-auto ">
                          <table class="w-full h-auto text-sm text-left text-gray-500 dark:text-gray-400">
                               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                    <tr>

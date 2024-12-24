@@ -1,4 +1,5 @@
 <?php
+require_once '../utils/DateFormat.php';
 $filtered = $_SESSION['todoId'][0] ?? [];
 $error = $_SESSION['error'] ?? [];
 $itemId = $_GET['id'];
@@ -73,7 +74,7 @@ $filtered = array_values($filtered)[0];
                          </div>
                          <div>
                               <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DueDate</label>
-                              <input value="<?= htmlspecialchars($filtered['date']) ?>" type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="11/11/2022" required="">
+                              <input value="<?php echo formatDateTime($filtered['date']); ?>" type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="11/11/2022" required="">
                               <?php if (!empty($error['date'])): ?>
                                    <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['date']) ?></p>
                               <?php endif; ?>
@@ -107,9 +108,9 @@ $filtered = array_values($filtered)[0];
                               <?php endif; ?>
                          </div>
                          <div class="sm:col-span-2">
-                              <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                              <textarea name="description" id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here">
-                              <?php echo htmlspecialchars($filtered['description']) ?>
+                              <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your description</label>
+                              <textarea name="description" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here...">
+                                   <?= htmlspecialchars($filtered['description']) ?>
                               </textarea>
                               <?php if (!empty($error['description'])): ?>
                                    <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['description']) ?></p>
