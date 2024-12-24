@@ -4,16 +4,16 @@
 function authProtectHomeMiddleware()
 {
      if (!isset($_SESSION['usersId'])) {
-          header('Location: /dashboard');  // Redirect to login page if not logged in
+          header('Location: /login'); // Redirect to login if not logged in
           exit();
      }
 }
 
-// Middleware to handle redirection for the login page
+// Middleware: Prevent logged-in users from accessing login/register pages
 function authHomeMiddleware()
 {
      if (isset($_SESSION['usersId'])) {
-          header('Location: /register');  // Redirect to home if already logged in
+          header('Location: /dashboard'); // Redirect logged-in users to dashboard
           exit();
      }
 }
