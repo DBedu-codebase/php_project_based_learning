@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                'isCompleted' => false,
                'createdAt' => date('Y-m-d H:i:s'),
                'updatedAt' => date('Y-m-d H:i:s'),
+
           ];
           $_SESSION['Todos-' . $_SESSION['usersId']['id']][] = $newTodos;
           header('Location: /dashboard');

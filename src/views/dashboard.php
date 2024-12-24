@@ -1,9 +1,5 @@
 <?php
 $error = $_SESSION['error'] ?? [];
-// unset($_SESSION['todoId']);
-// var_dump($_GET['filter']);
-// var_dump($_GET['q']);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
