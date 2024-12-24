@@ -3,11 +3,7 @@ require_once '../utils/DateFormat.php';
 $filtered = $_SESSION['todoId'][0] ?? [];
 $error = $_SESSION['error'] ?? [];
 $itemId = $_GET['id'];
-$filtered = array_filter($_SESSION['Todos-' . $_SESSION['usersId']['id']], function ($item) use ($itemId) {
-     return $item['id'] == $itemId;
-});
-$filtered = array_values($filtered)[0];
-
+// ? Todo: Tampilkan data dari session ``$_SESSION['Todos-' . $_SESSION['usersId']['id']]`` berdasarkan `id` menggunakan `foreach` atau `array_filter`
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +37,7 @@ $filtered = array_values($filtered)[0];
                          <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
                               <div class="py-3 px-4">
                                    <span class="block text-sm text-gray-500 truncate dark:text-gray-400">
-                                        <?php echo htmlspecialchars($_SESSION['usersId']['email']) ?>
+
                                    </span>
                               </div>
                               <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
@@ -101,7 +97,7 @@ $filtered = array_values($filtered)[0];
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                          <div>
                               <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                              <input value="<?= htmlspecialchars($filtered['title']) ?>" type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type task title" required="">
+                              <input value="" type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type task title" required="">
                               <?php if (!empty($error['title'])): ?>
                                    <p class="mt-2 text-sm text-red-600">
                                         <?= htmlspecialchars($error['title']) ?>
@@ -110,7 +106,7 @@ $filtered = array_values($filtered)[0];
                          </div>
                          <div>
                               <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DueDate</label>
-                              <input value="<?php echo formatDateTime($filtered['date']); ?>" type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="11/11/2022" required="">
+                              <input value="" type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="11/11/2022" required="">
                               <?php if (!empty($error['date'])): ?>
                                    <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['date']) ?></p>
                               <?php endif; ?>
@@ -118,8 +114,8 @@ $filtered = array_values($filtered)[0];
                          <div>
                               <label for="Priority" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Priority</label>
                               <select name="Priority" id="Priority" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                   <option value="<?= htmlspecialchars($filtered['priority']) ?>" selected>
-                                        <?= htmlspecialchars($filtered['priority']) ?>
+                                   <option value="" selected>
+
                                    </option>
                                    <option value="High">High</option>
                                    <option value="Medium">Medium</option>
@@ -132,8 +128,8 @@ $filtered = array_values($filtered)[0];
                          <div>
                               <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                               <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                   <option value="<?= htmlspecialchars($filtered['category']) ?>" selected>
-                                        <?= htmlspecialchars($filtered['category']) ?>
+                                   <option value="" selected>
+
                                    </option>
                                    <option value="Work">Work</option>
                                    <option value="School">School</option>
@@ -148,8 +144,8 @@ $filtered = array_values($filtered)[0];
                                    status
                               </label>
                               <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                   <option value="<?= $filtered['isCompleted'] ?>" selected>
-                                        <?= htmlspecialchars($filtered['isCompleted'] ? 'Completed' : 'Not Completed') ?>
+                                   <option value="" selected>
+                                        <!-- Todo: tampilkan completed atau not completed berdasar status -->
                                    </option>
                                    <option value="false">Not Completed</option>
                                    <option value="true">Completed</option>
@@ -158,7 +154,7 @@ $filtered = array_values($filtered)[0];
                          <div class="sm:col-span-2">
                               <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your description</label>
                               <textarea name="description" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here...">
-                                   <?= htmlspecialchars($filtered['description']) ?>
+
                               </textarea>
                               <?php if (!empty($error['description'])): ?>
                                    <p class="mt-2 text-sm text-red-600"><?= htmlspecialchars($error['description']) ?></p>

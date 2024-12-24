@@ -1,7 +1,4 @@
 <?php
-// session_start();
-// require_once '../middleware/AuthHomeMiddleware.php';
-// authHomeMiddleware();
 $error = $_SESSION['error'] ?? [];
 ?>
 <!DOCTYPE html>

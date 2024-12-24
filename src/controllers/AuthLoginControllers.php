@@ -2,7 +2,7 @@
 require_once '../utils/UseRouter.php';
 function validateLogin($username, $password)
 {
-     $validateUser = validateUser($username, $password);
+     $validateUser = validateUser();
 
      if ($validateUser) {
           return true;
@@ -16,12 +16,12 @@ function validateLogin($username, $password)
 
 function handlePostRequest()
 {
+     // ? Todo: Tambahkan value dari input pengguna, pada function `validateLogin()`
      $username = $_POST['email'] ?? '';
      $password = $_POST['password'] ?? '';
 
      try {
-          $error = validateLogin($username, $password);
-
+          $error = validateLogin();
           if ($error === true) {
                unset($_SESSION['error']);
                redirectTo('/dashboard');

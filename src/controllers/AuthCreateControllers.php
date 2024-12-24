@@ -4,14 +4,12 @@ require_once '../utils/FormValidation.php';
 require_once '../utils/UseRouter.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     $error = validateInput($_POST['email'], $_POST['password']);
+     // ? Todo: Tambahkan value dari input pengguna, pada function `validateInput()`
+     // ? Todo: Buatlah struktur array asosiatif pada variabel `$newUsers`
+     // $error = validateInput();
 
      if (empty($error)) {
-          $newUsers = [
-               'id' => uniqid(),
-               'email' => $_POST['email'],
-               'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-          ];
+          $newUsers = [];
           $_SESSION['Users'][] = $newUsers;
           redirectTo('/login');
      } else {
