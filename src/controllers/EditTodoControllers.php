@@ -4,7 +4,7 @@ require_once '../utils/FormValidation.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      $id = $_GET['id'] ?? null;
-
+     // var_dump($_POST);
      if ($id !== null) {
           $error = validateTodos(
                $_POST['title'],
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          $todo['priority'] = $_POST['Priority'] ?? $todo['priority'];
                          $todo['category'] = $_POST['category'] ?? $todo['category'];
                          $todo['description'] = $_POST['description'] ?? $todo['description'];
-                         $todo['isCompleted'] = $_POST['status'] ?? $todo['isCompleted'];
+                         $todo['isCompleted'] = $_POST['status'] === 'false' ? false : true;
                          $todo['updatedAt'] = date('Y-m-d H:i:s');
                          break; // Break the loop after finding and updating the todo
                     }

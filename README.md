@@ -1,7 +1,6 @@
 # **Project Requirement: Simple Login System**
 
-Berdasarkan penjelasan di atas, kita telah berhasil membuat project dan melakukan setup-boilerplate. Sebelumnya kita telah belajar mengenai **Kombinasi-kombinasi kondisional, 
-Looping** dan **Error-Handling** dalam materi *Fundamental Bab. SANG PENGATUR PROGRAM*. 
+Berdasarkan penjelasan di atas, kita telah berhasil membuat project dan melakukan setup-boilerplate. Sebelumnya kita telah belajar mengenai seluruh *Fundamental PHP Curicculum*. 
 
 Sekarang, buatlah sebuah project sederhana yang memenuhi kriteria berikut:
 
@@ -35,33 +34,57 @@ Sekarang, buatlah sebuah project sederhana yang memenuhi kriteria berikut:
           - `authProtectHomeMiddleware()`: Check jika tidak terdapat session `usersId`, dengan `isset`. 
           - `authProtectHomeMiddleware()`: Check terdapat session `usersId`, dengan `isset`.
 
-- Views `index.php`:
+- Views `login.php`:
      - Delete session `error`, menggunakan unset.
      - Tampilkan data dari session `error`, berdasarkan key value sesuai struktur session `error`.
           - Gunakan `php if (!empty($error['email']))`, untuk memastikan validasi error hanya tampil saat terjadi error.
           - Gunakan `<?= htmlspecialchars($error['password']) ?>`, untuk menampilkan value dari session `error`
-- Views `Sign-up.php`:
+- Views `register.php`:
      - Tampilkan data dari session `error`, berdasarkan key value sesuai struktur session `error`.
           - Gunakan `php if (!empty($error['email']))`, untuk memastikan validasi error hanya tampil saat terjadi error.
           - Gunakan `<?= htmlspecialchars($error['password']) ?>`, untuk menampilkan value dari session `error`
-- Views `Home.php`:
+- Views `dashboard.php`:
      - Tampilkan data dari session `usersId`
           - Gunakan `<?= htmlspecialchars($_SESSION['usersId']['email']) ?>`, untuk menampilkan email value dari session `usersId`
-
+     - Tampilkan data dari session Todos `$_SESSION['Todos-' . ($_SESSION['usersId']['id'])`
+          - Gunakan `<?php foreach ($todos as $todo) : ?>`, untuk menampilkan selusurh Todos value dari session `$_SESSION['Todos-' . ($_SESSION['usersId']['id'])`
+          - Gunakan `<?= htmlspecialchars($todo['title']) ?>`, untuk menampilkan Todos value pada HTML-Tag.
 - Utils `FormValidation.php`:
-     - Buatlah Function Form Validation:
-          - `validateInput()`: Buatlah validasi dengan ketentuan berikut: 
-               - username: 
-                    - `if`: input username kosong, maka tampilkan `'Email is required'`
-                    - `elseif`: input username tidak valid, maka tampilkan `'Please enter your valid mail'`. Gunakan `!filter_var($username, FILTER_VALIDATE_EMAIL)`, untuk melakukan validasi email.                    
-                    - `elseif`: input username telah digunakan, maka tampilkan `'Email already exists'`. Gunakan `isset, array_search & array_column` atau bisa menggunakan looping, untuk melakukan email sudah digunkan atau belum.
-               - password: 
-                    - `if`: input password kosong, maka tampilkan `'Password is required'`
-                    - `elseif`: input password kurang dari 8 karakter, maka tampilkan `'Password must be at least 8 characters
-          - Pada`validateUser()`, buatlah sebuah looping pada session `$_SESSION['Users']`, kemudian lakukan validasi berikut: 
-               - `if $user['email'] == $username && password_verify($password, $user['password'])`
-               - Maka assign session `usersId` dengan nilai dari value `$user`
-               - Terakhir return true, untuk mengembalikan nilai bahwa telah berhasil mendapatkan data user pada session.
+     - Implementasikan Function Form Validation:
+          - `validateInput()` & `validateTodos`: Implementasikan form validasi yang telah disediakan, untuk melakukan validasi dari input pengguna.
+          - `validateUser()`: Implementasikan function `validateUser()` yang telah disediakan, untuk melakukan validasi user akun milik pengguna.
+
+- Utils `DateFormat.php`:
+     - Implementasikan Function Date Format:
+          - `formatDate()`: Implementasikan function`formatDate()` yang telah disediakan, untuk melakukan format input date pengguna pada saat create-task.
+          - `formatDateTime()`: Implementasikan function `formatDateTime()` yang telah disediakan, untuk melakukan format input date pengguna pada saat update-task.
+1. **Buat sebuah crud Todo-Task menggunakan array Associative dengan implementasi session**, dengan ketentuan berikut:  
+- Controllers `CreateProducts.php`:
+
+     Buatlah struktur array asosiatif pada variabel `$newProduct`:
+     - id: uniqid()
+     - name
+     - brand
+     - description
+     - price   
+- Controllers `DeleteAllProducts.php`:
+     - Delete session `ProductData`, menggunakan unset
+- Controllers `DeleteProducts.php`:
+     - Delete data dari `ProductData` berdasarkan `id` menggunakan `foreach unset` atau `array build in function` dari php. 
+- Controllers `GetDetails.php`:
+     - Get `ProductData` berdasarkan `id` menggunakan `foreach` atau `array_filter`. 
+- Controllers `GetProducts.php`:
+     - Get all data dari `ProductData` dan hitung length_of_array `ProductData` dengan menggunakan `count`.
+- Controllers `PutProducts.php`:
+     - Get `ProductData` berdasarkan `id` menggunakan `foreach` atau `array_filter`. 
+     - Update `ProductData` berdasarkan `id`, berdasarkan value dari input pengguna `$_POST['name']`
+
+- Views `index.php`:
+     - Tampilkan seluruh data dari `GetProducts.php`, menggunakan `foreach` & `echo`.
+     - Pastikan data dari `foreach`, di render secara tepat.
+- Views `EditProduct.php`:
+     - Tampilkan data dari `GetDetails.php`, berdasarkan key value sesuai dari struktur `ProductData`.
+     - Passing `id`, pada action yang membutuhkan seperti `edit & delete`  
 
 ## **Output Format**
 
