@@ -37,13 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                // Redirect to dashboard after successful update
                unset($_SESSION['error']);
-               header('Location: /dashboard');
-               exit();
+               redirectTo('/dashboard');
           } else {
                // Save error messages and redirect back to the update form
                $_SESSION['error'] = $error;
-               header('Location: /UpdateTodos');
-               exit();
+               redirectTo('/UpdateTodos?id=' . $id);
           }
      }
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../utils/FormValidation.php';
+require_once '../utils/UseRouter.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      $error = validateInput($_POST['email'], $_POST['password']);
@@ -12,12 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
           ];
           $_SESSION['Users'][] = $newUsers;
-          // var_dump($_SESSION['Users']);
-          header("Location: /login");
-          exit();
+          redirectTo('/login');
      } else {
           $_SESSION['error'] = $error;
-          header('Location: /register');
-          exit();
+          redirectTo('/register');
      }
 }

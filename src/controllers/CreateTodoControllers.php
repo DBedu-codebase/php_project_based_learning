@@ -3,35 +3,45 @@
 require_once '../utils/FormValidation.php';
 require_once '../utils/DateFormat.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+function createTodo($data)
+{
      $error = validateTodos(
-          $_POST['title'],
-          $_POST['date'],
-          $_POST['Priority'],
-          $_POST['category'],
-          $_POST['description']
+          $data['title'],
+          $data['date'],
+          $data['Priority'],
+          $data['category'],
+          $data['description']
      );
 
-     if (empty($_SESSION['error'])) {
-          unset($_SESSION['error']);
-          $newTodos = [
-               'id' => uniqid(),
-               'title' => $_POST['title'],
-               'date' => formatDate($_POST['date']),
-               'priority' => $_POST['Priority'],
-               'category' => $_POST['category'],
-               'description' => trim(preg_replace('/\s+/', ' ', $_POST['description'])),
-               'isCompleted' => false,
-               'createdAt' => date('Y-m-d H:i:s'),
-               'updatedAt' => date('Y-m-d H:i:s'),
-
-          ];
-          $_SESSION['Todos-' . $_SESSION['usersId']['id']][] = $newTodos;
-          header('Location: /dashboard');
-          exit();
-     } else {
+     if (!empty($error)) {
           $_SESSION['error'] = $error;
-          header('Location: /dashboard');
-          exit();
+          redirectTo('/dashboard');
+          return;
+     }
+
+     $newTodos = [
+          'id' => uniqid(),
+          'title' => $data['title'],
+          'date' => formatDate($data['date']),
+          'priority' => $data['Priority'],
+          'category' => $data['category'],
+          'description' => trim(preg_replace('/\s+/', ' ', $data['description'])),
+          'isCompleted' => false,
+          'createdAt' => date('Y-m-d H:i:s'),
+          'updatedAt' => date('Y-m-d H:i:s'),
+     ];
+
+     $_SESSION['Todos-' . $_SESSION['usersId']['id']][] = $newTodos;
+     redirectTo('/dashboard');
+}
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+     try {
+          createTodo($_POST);
+     } catch (Exception $e) {
+          $_SESSION['error'] = ['general' => 'An error occurred while creating the todo.'];
+          redirectTo('/dashboard');
      }
 }

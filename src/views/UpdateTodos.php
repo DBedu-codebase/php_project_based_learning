@@ -7,6 +7,7 @@ $filtered = array_filter($_SESSION['Todos-' . $_SESSION['usersId']['id']], funct
      return $item['id'] == $itemId;
 });
 $filtered = array_values($filtered)[0];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
