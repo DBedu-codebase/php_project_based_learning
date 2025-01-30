@@ -44,6 +44,13 @@ $error = $_SESSION['error'] ?? [];
                                              </button>
                                         </form>
                                    </li>
+                                   <li>
+                                        <form action="/AuthDeleteAccountControllers" method="post">
+                                             <button type="submit" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                  Delete Accounts
+                                             </button>
+                                        </form>
+                                   </li>
                               </ul>
                          </div>
                     </div>

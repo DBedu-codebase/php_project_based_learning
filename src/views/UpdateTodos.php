@@ -45,7 +45,7 @@ $filtered = array_values($filtered)[0];
                               </div>
                               <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
                                    <li>
-                                        <form action="/AuthdescriptiontroyControllers" method="post">
+                                        <form action="/AuthDestroyControllers" method="post">
                                              <button type="submit" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                   Sign out
                                              </button>
